@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useStateValue } from "../Redux/StateProvider";
 import "./Sidebar.css";
 import "./Searchbar.css";
 
@@ -11,11 +11,12 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Avatar, IconButton } from "@mui/material";
 
-const Sidebar = () => {
+const Sidebar = ({ messages }) => {
+  const [{ user }, dispatch] = useStateValue();
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar src="../../../Photos/avat1.jpg" />
+        <Avatar src={user?.photoURL} />
 
         <div className="sidebar__headerRight">
           <IconButton>
@@ -36,9 +37,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="sidebar__chats">
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
+        <SidebarChat messages={messages} />
       </div>
     </div>
   );

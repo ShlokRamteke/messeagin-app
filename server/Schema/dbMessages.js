@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 
 const messagingSchema = mongoose.Schema({
-  message: String,
   name: String,
+  message: String,
+
   timestamp: String,
   received: Boolean,
 });
